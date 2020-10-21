@@ -1,0 +1,26 @@
+{
+  "name": "API_adote_um_robo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ladeirakelwin/API_adote_um_robo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ladeirakelwin/API_adote_um_robo/issues"
+  },
+  "homepage": "https://github.com/ladeirakelwin/API_adote_um_robo#readme",
+  "dependencies": {
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
