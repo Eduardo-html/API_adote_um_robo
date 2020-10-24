@@ -12,7 +12,7 @@ const scrape = async (param) => {
     document.querySelectorAll('section > div > div > ul > li')
       .forEach( element => {
         if( element.classList.contains('widget--info') && !element.classList.contains('widget--ad') )
-          arr.push( element.outerHTML )
+          articles.push( element.outerHTML )
       });
     
     return articles;
