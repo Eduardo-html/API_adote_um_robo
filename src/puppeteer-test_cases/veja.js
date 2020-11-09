@@ -1,17 +1,16 @@
 const puppeteer = require("puppeteer");
 
-export async function veja(params) {
+const veja = async (params) => {
   const path = {
-    varejo: "noticias-sobre/mercado-imobiliario/",
+    varejo: "noticias-sobre/comercio/",
     saude: "saude/",
     imobiliario: "noticias-sobre/mercado-imobiliario/"
   }
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(
-    `https://veja.abril.com.br/${path}`
+    `https://veja.abril.com.br/${path[params]}`
   );
-
   const dimensions = await page.evaluate(() => {
     const link = [];
     const manchete = [];
@@ -45,5 +44,7 @@ export async function veja(params) {
     return final;
   });
   await browser.close();
-  console.log(dimensions);
+  return dimensions;
 }
+
+module.exports = veja;

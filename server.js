@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
+const veja = require('./src/routes/routes')
 
-app.listen(8000, () => 'Curuzes')
+veja(app)
+app.listen(8000, () => console.log("Foi!"))
 
-app.get('/', (req, res) => {
-  res.send("bração velho")
-})
