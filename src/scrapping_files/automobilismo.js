@@ -48,7 +48,7 @@ const moneytimeScrape = async () => {
     let count = 0;
     const articles = [];
 
-    document.querySelectorAll('main > div.element-list > div.element-item')
+    document.querySelectorAll('main > div.news-list > div.news-item')
       .forEach( element => {
         if (count >= 3 )
           return;
@@ -111,12 +111,7 @@ const vejaScrape = async () => {
   });
   browser.close();
 
-  console.log(result);
   return result;
 };
 
-vejaScrape();
-
-module.exports.globoScrape = globoScrape;
-module.exports.moneytimeScrape = moneytimeScrape;
-module.exports.vejaScrape = vejaScrape;
+module.exports = [ globoScrape , moneytimeScrape , vejaScrape ];
