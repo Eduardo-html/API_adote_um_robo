@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 
 export async function scrapeG1(param) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   await page.goto(`https://g1.globo.com/busca/?q=${param}`);
 
@@ -25,7 +25,7 @@ export async function scrapeG1(param) {
 }
 
 export async function scrapeFolha(param) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   await page.goto(
     `https://search.folha.uol.com.br/search?q=${param}&periodo=todos&sd=&ed=&site=todos`

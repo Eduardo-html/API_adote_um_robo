@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const globoScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
@@ -42,7 +42,7 @@ const globoScrape = async () => {
 };
 
 const moneytimeScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
@@ -79,7 +79,7 @@ const moneytimeScrape = async () => {
 };
 
 const petronoticiasScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
