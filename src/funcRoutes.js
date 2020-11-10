@@ -1,15 +1,25 @@
-const stockScrape = require('./puppeteer-test_cases/stocks-puppeteer');
+const stockScrape = require('./scrapping_files/stocks-puppeteer');
 
-const scrapper = require('./puppeteer-test_cases/veja');
+const scrapper = require('./scrapping_files/veja');
 const automobScrape = require('./scrapping_files/automobilismo');
 const logisticScrape = require('./scrapping_files/logistica');
 const oleoGasScrape = require('./scrapping_files/oleo_gas');
 
 exports.veja = (app, rota) => {
+  const stockUri = {
+    varejo: 'sectorandindustry-sector/retail-trade',
+    saude: 'sectorandindustry-sector/health-services',
+    imobiliario: 'sectorandindustry-industry/homebuilding/'
+  }
+
   app.get(`/${rota}`, async (req, res) => {
     const response = await scrapper(`${rota}`)
-    // Fazer a implementação do recebimento das informações da bolsa
-    res.json( { newsList: response } )
+    const stocks = await stockScrape( stockUri[ rota ] )
+
+    res.json( {
+      newsList: response,
+      stockList: stocks
+    })
   })
 }
 
