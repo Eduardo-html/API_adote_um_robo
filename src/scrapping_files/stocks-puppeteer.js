@@ -44,6 +44,6 @@ module.exports = scrape = async (param) => {
  * sectorandindustry-sector/health-services (saude)
  * sectorandindustry-sector/distribution-services (logística)
  * sectorandindustry-industry/oil-gas-production (óleo e gás)
- * sectorandindustry-industry/other-transportation (automobilística)
+ * sectorandindustry-industry/motor-vehicles (automobilística)
  * sectorandindustry-industry/homebuilding (imobiliária)
  */

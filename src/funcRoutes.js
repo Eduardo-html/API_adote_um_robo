@@ -27,7 +27,7 @@ exports.automobScrape = ( app ) => {
   app.get('/automobilismo' , async ( req ,res ) => {
     const num = Math.round( Math.random() * 2 );
     const response = await automobScrape[num]();
-    const stocks = await stockScrape('sectorandindustry-industry/other-transportation')
+    const stocks = await stockScrape('sectorandindustry-industry/motor-vehicles')
     res.json( {
       newsList: response,
       stockList: stocks
