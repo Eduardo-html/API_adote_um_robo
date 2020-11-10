@@ -20,8 +20,8 @@ module.exports = scrape = async (param) => {
             stockCode: stock.querySelector("a.tv-screener__symbol").innerText,
             title: stock.querySelector("span.tv-screener__description").innerText,
             link: stock.querySelector("a.tv-screener__symbol").getAttribute('href'),
-            price: stock.querySelector( "[data-field-key='close'] > span" ).innerText,
-            recommendation: stock.querySelector( "[data-field-key='Recommend.All'] > span" ).innerText,
+            price: stock.querySelector( "[data-field-key='close']" ).innerText,
+            recommendation: stock.querySelector( "[data-field-key='Recommend.All']" ).innerText,
             volume: stock.querySelector( "[data-field-key='volume']" ).innerText,
             marketCap: stock.querySelector( "[data-field-key='market_cap_basic']" ).innerText,
             priceEarnings: stock.querySelector( "[data-field-key='price_earnings_ttm']" ).innerText,
@@ -37,11 +37,13 @@ module.exports = scrape = async (param) => {
   return result;
 };
 
+
 /* SETORES NA URI
  * sectorandindustry-sector/finance (finanças)
  * sectorandindustry-sector/retail-trade (varejo)
  * sectorandindustry-sector/health-services (saude)
  * sectorandindustry-sector/distribution-services (logística)
  * sectorandindustry-industry/oil-gas-production (óleo e gás)
- * sectorandindustry-industry/other-transportation (automobilistica)
+ * sectorandindustry-industry/motor-vehicles (automobilística)
+ * sectorandindustry-industry/homebuilding (imobiliária)
  */
