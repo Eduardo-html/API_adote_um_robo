@@ -34,10 +34,10 @@ const veja = async (params) => {
 
     for (let i = 0; i < 3; i++) {
       final.push({
-        manchete: manchete[i],
-        link: link[i],
-        description: text[i],
+        title: manchete[i],
+        desc: text[i],
         img: img[i],
+        link: link[i]
       });
     }
 

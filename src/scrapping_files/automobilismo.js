@@ -16,13 +16,15 @@ const globoScrape = async (param) => {
         if (count >= 3 )
           return;
         else {
+          const img = element.querySelector('.widget--info__media-container > a > img') !== null ? element.querySelector('.widget--info__media-container > a > img').getAttribute('src') : "No Image";
+
           articles.push({
 
             title: element.querySelector('div.feed-post-body-title > div > a').innerText,
 
             desc: element.querySelector('div.feed-post-body-resumo').innerText,
 
-            img: element.querySelector('picture.bstn-fd-cover-picture > img').getAttribute('src'),
+            img: img,
 
             link: element.querySelector('a').getAttribute('href')
           });
@@ -95,11 +97,11 @@ const vejaScrape = async () => {
 
               title: element.querySelector('h2').innerText,
   
+              desc: element.querySelector('span.description').innerText,
+
               img: element.querySelector('figure > img').getAttribute('src'),
   
-              link: element.querySelector('div > div > a').getAttribute('href'),
-  
-              desc: element.querySelector('span.description').innerText
+              link: element.querySelector('div > div > a').getAttribute('href')
             });
 
             count++;

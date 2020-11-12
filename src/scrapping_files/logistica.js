@@ -17,13 +17,15 @@ const globoScrape = async () => {
           if (count >= 3 )
             return;
           else {
+            const img = element.querySelector('.widget--info__media-container > a > img') !== null ? element.querySelector('.widget--info__media-container > a > img').getAttribute('src') : "No Image";
+
             articles.push({
 
               title: element.querySelector('.widget--info__text-container > a > .widget--info__title').innerText,
                 
               desc: element.querySelector('.widget--info__text-container > a > .widget--info__description').innerText,
 
-              img: element.querySelector('.widget--info__media-container > a > img').getAttribute('src'),
+              img: img,
 
               link: element.querySelector('.widget--info__text-container > a').getAttribute('href')
             
@@ -98,12 +100,11 @@ const newtradeScrape = async () => {
 
             title: element.querySelector('title').innerText,
 
+            desc: element.querySelector('description > p').innerText,
+
             img: element.querySelector('description > img').getAttribute('src'),
 
-            link: element.querySelector('link').innerText,
-
-            desc: element.querySelector('description > p').innerText
-
+            link: element.querySelector(' item > description > p > a ').getAttribute('href')
           });
 
           count++;
