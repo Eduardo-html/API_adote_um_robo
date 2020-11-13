@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const globoScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
@@ -17,13 +17,15 @@ const globoScrape = async () => {
           if (count >= 3 )
             return;
           else {
+            const img = element.querySelector('.widget--info__media-container > a > img') !== null ? element.querySelector('.widget--info__media-container > a > img').getAttribute('src') : "No Image";
+
             articles.push({
 
               title: element.querySelector('.widget--info__text-container > a > .widget--info__title').innerText,
                 
               desc: element.querySelector('.widget--info__text-container > a > .widget--info__description').innerText,
 
-              img: element.querySelector('.widget--info__media-container > a > img').getAttribute('src'),
+              img: img,
 
               link: element.querySelector('.widget--info__text-container > a').getAttribute('href')
             
@@ -42,7 +44,7 @@ const globoScrape = async () => {
 };
 
 const moneytimeScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
@@ -79,7 +81,7 @@ const moneytimeScrape = async () => {
 };
 
 const petronoticiasScrape = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   const page = await browser.newPage();
 
@@ -98,12 +100,11 @@ const petronoticiasScrape = async () => {
 
             title: element.querySelector('div.post > h2 > a').getAttribute('title'),
 
+            desc: element.querySelector('div.post > div.entry > p').innerText,
+
             img: element.querySelector('div.post > a > img').getAttribute('src'),
 
-            link: element.querySelector('div.post > a').getAttribute('href'),
-
-            desc: element.querySelector('div.post > div.entry > p').innerText
-
+            link: element.querySelector('div.post > a').getAttribute('href')
           });
 
           count++;

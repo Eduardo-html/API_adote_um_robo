@@ -6,7 +6,7 @@ const veja = async (params) => {
     saude: "saude/",
     imobiliario: "noticias-sobre/mercado-imobiliario/"
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   await page.goto(
     `https://veja.abril.com.br/${path[params]}`
@@ -34,10 +34,10 @@ const veja = async (params) => {
 
     for (let i = 0; i < 3; i++) {
       final.push({
-        manchete: manchete[i],
-        link: link[i],
-        description: text[i],
+        title: manchete[i],
+        desc: text[i],
         img: img[i],
+        link: link[i]
       });
     }
 

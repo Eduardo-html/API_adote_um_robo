@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+app.use(cors())
 
 const veja = require('./src/routes/veja.routes');
 const automob = require('./src/routes/automob.routes');
@@ -11,4 +14,4 @@ automob(app);
 logistic(app);
 oleoGas(app)
 
-app.listen(8000, () => console.log("Foi!"));
+app.listen( process.env.PORT || 8000, () => console.log("Connected"));
