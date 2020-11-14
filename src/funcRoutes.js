@@ -1,5 +1,3 @@
-//const stockScrape = require('./scrapping_files/stocks-puppeteer');
-
 const scrapper = require('./scrapping_files/veja');
 const automobScrape = require('./scrapping_files/automobilismo');
 const logisticScrape = require('./scrapping_files/logistica');
