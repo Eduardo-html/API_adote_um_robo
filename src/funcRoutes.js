@@ -7,24 +7,21 @@ const oleoGasScrape = require('./scrapping_files/oleo_gas');
 
 exports.automobScrape = ( app ) => {
   app.get('/automobilismo' , async ( req ,res ) => {
-    const num = Math.round( Math.random() * 2 );
-    const response = await automobScrape[num]();
+    const response = await automobScrape();
     res.send( response )
   })
 }
 
 exports.logisticScrape = ( app ) => {
   app.get('/logistica' , async ( req ,res ) => {
-    const num = Math.round( Math.random() * 2 );
-    const response = await logisticScrape[num]();
+    const response = await logisticScrape();
     res.json( response )
   })
 }
 
 exports.oleoGasScrape = ( app ) => {
   app.get('/oleo_gas' , async ( req ,res ) => {
-    const num = Math.round( Math.random() * 2 );
-    const response = await oleoGasScrape[num]();
+    const response = await oleoGasScrape();
     res.send( response )
   })
 }

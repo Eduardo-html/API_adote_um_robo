@@ -47,3 +47,10 @@ module.exports = scrape = async (param) => {
  * sectorandindustry-industry/motor-vehicles (automobilística)
  * sectorandindustry-industry/homebuilding (imobiliária)
  */
+/**
+ * const stockUri = {
+    varejo: 'sectorandindustry-sector/retail-trade',
+    saude: 'sectorandindustry-sector/health-services',
+    imobiliario: 'sectorandindustry-industry/homebuilding/'
+  }
+ */
