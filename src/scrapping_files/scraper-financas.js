@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const scrapeFinancas = async () => {
+module.exports = async () => {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto(`https://investnews.com.br/financas/`);
@@ -14,13 +14,14 @@ const scrapeFinancas = async () => {
 				if ( count >= 3 )
 					return;
 				else {
-					arr.push({
+					articles.push({
 						title: element.querySelector("div.mvp-blog-story-text > h2").innerText,
 						desc: element.querySelector("div.mvp-blog-story-text > p").innerText,
 						img: element.querySelector("div.mvp-blog-story-img > img").getAttribute('src'),
 						link: element.querySelector("a").getAttribute('href')
 					})
 				}
+				count++;
 			});
 
 		return articles;
@@ -29,5 +30,3 @@ const scrapeFinancas = async () => {
 
 	return result;
 };
-
-module.exports = scrapeFinancas;
