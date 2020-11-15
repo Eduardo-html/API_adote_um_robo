@@ -7,6 +7,8 @@ const db = mongoose.connection;
 
 const newsListSchema = new mongoose.Schema( {
   sector: String,
+  site: String,
+  date: String,
   newsList: Array
 });
 

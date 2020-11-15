@@ -1,57 +1,37 @@
-const scrapper = require('./scrapping_files/veja');
-const automobScrape = require('./scrapping_files/automobilismo');
-const logisticScrape = require('./scrapping_files/logistica');
-const oleoGasScrape = require('./scrapping_files/oleo_gas');
-const scrapeFinancas = require('./scrapping_files/scraper-financas');
+const { NewsList } = require('./config/database');
 
 
 exports.automobScrape = ( app ) => {
   app.get('/automobilismo' , async ( req ,res ) => {
-    const response = await automobScrape();
-    res.json( {
-      response,
-      site: 'autoesporte.globo.com'
-    });
+    const response = await NewsList.find({ sector: 'automobilismo' });
+    res.send( response );
   })
 }
 
 exports.logisticScrape = ( app ) => {
   app.get('/logistica' , async ( req ,res ) => {
-    const response = await logisticScrape();
-    res.json( {
-      response,
-      site: 'newtrade.com.br'
-    });
+    const response = await NewsList.find({ sector: 'logistica' });
+    res.send( response );
   })
 }
 
 exports.oleoGasScrape = ( app ) => {
   app.get('/oleo_gas' , async ( req ,res ) => {
-    const response = await oleoGasScrape();
-    res.json( {
-      response,
-      site: 'petronoticias.com.br'
-    });
+    const response = await NewsList.find({ sector: 'oleo_gas' });
+    res.send( response );
   })
 }
 
 exports.financeiro = (app) => {
   app.get('/financeiro' , async ( req , res ) => {
-    const response = await scrapeFinancas();
-    res.json( {
-      response,
-      site: 'investnews.com.br'
-    });
+    const response = await NewsList.find({ sector: 'financeiro' });
+    res.send( response );
   })
 }
 
 exports.veja = (app, rota) => {
-
   app.get(`/${rota}`, async (req, res) => {
-    const response = await scrapper(`${rota}`)
-    res.json( {
-      response,
-      site: 'veja.abril.com.br'
-    });
+    const response = await NewsList.find({ sector: `${rota}` });
+    res.send( response );
   })
 }
