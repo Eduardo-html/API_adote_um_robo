@@ -6,18 +6,24 @@ const scrapeFinancas = async () => {
 	await page.goto(`https://investnews.com.br/financas/`);
 
 	const result = await page.evaluate(() => {
-		const arr = [];
+		const articles = [];
+		let count = 0;
+
 		document.querySelectorAll('li.mvp-blog-story-wrap')
 			.forEach(element => {
-				arr.push({
-					title: element.querySelector("div.mvp-blog-story-text > h2").innerText,
-					desc: element.querySelector("div.mvp-blog-story-text > p").innerText,
-					img: element.querySelector("div.mvp-blog-story-img > img").getAttribute('src'),
-					link: element.querySelector("a").getAttribute('href')
-				})
+				if ( count >= 3 )
+					return;
+				else {
+					arr.push({
+						title: element.querySelector("div.mvp-blog-story-text > h2").innerText,
+						desc: element.querySelector("div.mvp-blog-story-text > p").innerText,
+						img: element.querySelector("div.mvp-blog-story-img > img").getAttribute('src'),
+						link: element.querySelector("a").getAttribute('href')
+					})
+				}
 			});
 
-		return arr;
+		return articles;
 	});
 	browser.close();
 
