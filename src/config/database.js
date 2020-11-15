@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const mongoose = require('mongoose');
 mongoose.connect( process.env.DATABASE_URL , { useNewUrlParser: true } );
 
@@ -7,6 +5,8 @@ const db = mongoose.connection;
 
 const newsListSchema = new mongoose.Schema( {
   sector: String,
+  site: String,
+  date: String,
   newsList: Array
 });
 
