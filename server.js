@@ -18,7 +18,6 @@ logistic(app);
 oleoGas(app);
 financas(app)
 
-dbScrapping();
 setInterval( () => dbScrapping() , 1_800_000);
 
 app.listen( process.env.PORT || 8000, () => console.log("Connected"));
