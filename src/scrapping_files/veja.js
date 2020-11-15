@@ -4,7 +4,8 @@ const veja = async (params) => {
   const path = {
     varejo: "noticias-sobre/comercio/",
     saude: "saude/",
-    imobiliario: "noticias-sobre/mercado-imobiliario/"
+    imobiliario: "noticias-sobre/mercado-imobiliario/",
+    educacao: "noticias-sobre/educacao/"
   }
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
