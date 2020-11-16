@@ -1,36 +1,32 @@
 const puppeteer = require('puppeteer');
 
-const scrapeFinancas = async () => {
-	const browser = await puppeteer.launch();
+module.exports = async () => {
+	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto(`https://investnews.com.br/financas/`);
 
 	const result = await page.evaluate(() => {
-		var data = new Date();
-		var dia = data.getDate();
-		var mes = data.getMonth();
-		var ano = data.getFullYear();
+		const articles = [];
+		let count = 0;
 
-		let formatedDate = dia + '/' + (mes+1) + '/' + ano;
-
-		const arr = [];
 		document.querySelectorAll('li.mvp-blog-story-wrap')
 			.forEach(element => {
-				arr.push({
-					title: element.querySelector("div.mvp-blog-story-text > h2").innerText,
-					desc: element.querySelector("div.mvp-blog-story-text > p").innerText,
-					img: element.querySelector("div.mvp-blog-story-img > img").getAttribute('src'),
-					link: element.querySelector("a").getAttribute('href'),
-					date: formatedDate
-				})
+				if ( count >= 3 )
+					return;
+				else {
+					articles.push({
+						title: element.querySelector("div.mvp-blog-story-text > h2").innerText,
+						desc: element.querySelector("div.mvp-blog-story-text > p").innerText,
+						img: element.querySelector("div.mvp-blog-story-img > img").getAttribute('src'),
+						link: element.querySelector("a").getAttribute('href')
+					})
+				}
+				count++;
 			});
 
-		return arr;
+		return articles;
 	});
 	browser.close();
 
 	return result;
 };
-
-
-module.exports = scrapeFinancas;
