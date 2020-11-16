@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dbScrapping = require('./src/config/scrapperDataAdd');
+const { NewsList } = require('./src/config/database');
 
 const app = express();
 
@@ -18,6 +19,9 @@ logistic(app);
 oleoGas(app);
 financas(app)
 
-setInterval( () => dbScrapping() , 1_800_000);
+setInterval( async () => {
+  await NewsList.deleteMany();
+  await dbScrapping()
+} , 1_800_000);
 
 app.listen( process.env.PORT || 8000, () => console.log("Connected"));
